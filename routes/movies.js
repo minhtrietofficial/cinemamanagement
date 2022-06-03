@@ -3,6 +3,16 @@ var router = express.Router();
 
 const moviesController = require('../controllers/movies.controller')
 
+router.get('/', function (req, res, next) {
+    let context = {
+
+        title: 'Movies Management',
+        layout: 'layout'
+    }
+    return res.render('movies', context);
+
+});
+
 //---------------
 /*method: post*/
 /*
@@ -60,7 +70,7 @@ response: {code,msg}
 router.get('/', moviesController.getMovies)
 
 //--------------
-/*method: get -- Lưu ý: yêu cầu giá trị sau link VD: http://localhost:3000/movies/2 --*/ 
+/*method: get -- Lưu ý: yêu cầu giá trị sau link VD: http://localhost:3000/movies/2 --*/
 /*
 request: none 
 response: {code,msg}
