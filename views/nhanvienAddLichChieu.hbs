@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/nhanvien.css">
+</head>
+<body>
+    <div id="modal-bg"></div>
+    <div id="modal-box">
+        <div id="modal-message"></div>
+        <div>
+            <button id="modal-confirm">Xác nhận</button>
+            <button id="modal-close">Đóng</button>
+        </div>
+    </div>
+
+    <div>
+            <form action="">
+                <label for="">Phim</label>
+                <select name="" id="phim">
+                    {{#each phim}}
+                        <option value="{{IDPhim}},{{TenPhim}}">{{TenPhim}}</option>
+                    {{/each}}
+                </select>
+                <label for="">Phòng chiếu</label>
+                <select name="" id="phongchieu">
+                    {{#each phongchieu}}
+                        <option value="{{IDPhongChieu}},{{TenPhongChieu}}">{{TenPhongChieu}}</option>
+                    {{/each}}
+                </select>
+                <label for="">Thời gian bắt đầu</label>
+                <input type="time" name="" id="thoigianbatdau">
+                <label for="">Thời gian kết thúc</label>
+                <input type="time" name="" id="thoigianketthuc">
+                <label for="">Ngày Chiếu</label>
+                <input type="date" name="" id="ngaychieu">
+                <label for="">Giá vé</label>
+                <input type="number" name="" id="giave">
+                <label for="">Hình thức</label>
+                <input type="text" name="" id="hinhthuc">
+            </form>
+            <div>
+                <button onclick="addLichChieu()">Xác nhận</button>
+                <button onclick="cancelUpdateLichChieu()">Hủy</button>
+            </div>
+            <div id="message" style="display: none"></div>
+    </div>
+</body>
+<script src="/javascripts/nhanvien.js"></script>
+</html>

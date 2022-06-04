@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/nhanvien.css">
+</head>
+<body>
+    <div id="modal-bg"></div>
+    <div id="modal-box">
+        <div id="modal-message"></div>
+        <div>
+            <button id="modal-confirm">Xác nhận</button>
+            <button id="modal-close">Đóng</button>
+        </div>
+    </div>
+    <table>
+        <thead>
+            <th>ID</th>
+            <th>Phim</th>
+            <th>Ngày chiếu</th>
+            <th>Thời gian bắt đầu</th>
+            <th>Thời gian kết thúc</th>
+            <th>Phòng chiếu</th>
+            <th>Giá vé</th>
+            <th></th>
+        </thead>
+        <tbody id="lichchieu">
+            {{#each lichchieu}}
+                <tr>
+                    <td onclick="informationLichChieuPage({{IDLichChieu}})">{{IDLichChieu}}</td>
+                    <td onclick="informationLichChieuPage({{IDLichChieu}})">{{TenPhim}}</td>
+                    <td onclick="informationLichChieuPage({{IDLichChieu}})">{{NgayChieu}}</td>
+                    <td onclick="informationLichChieuPage({{IDLichChieu}})">{{ThoiGianBatDau}}</td>
+                    <td onclick="informationLichChieuPage({{IDLichChieu}})">{{ThoiGianketThuc}}</td>
+                    <td onclick="informationLichChieuPage({{IDLichChieu}})">{{TenPhongChieu}}</td>
+                    <td onclick="informationLichChieuPage({{IDLichChieu}})">{{GiaVe}}</td>
+                    <td ><button onclick="modalLichChieuConfirm({{IDLichChieu}})">delete</button></td>
+                </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <a href="/nhanvien/lichchieu/add">Thêm</a>
+</body>
+<script src="/javascripts/nhanvien.js"></script>
+</html>
