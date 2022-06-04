@@ -1,24 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/stylesheets/user.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
 </head>
+
 <body>
     <div>
-        <h4>Phim Đang Chiếu</h4>
-        {{#each phim}}
-        <div id='movie'>
-            <img src="/images/{{IDPhim}}.png" alt="">
-        {{TenPhim}}
-            <button onclick="movieInfoPage({{IDPhim}})">Chi tiết</button>
+        <div class="d-flex justify-content-center m-3">
+            <h1>Phim đang chiếu</h1>
         </div>
-        {{/each}}
+
+
     </div>
-    
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <!-- dòng phải là con trực tiếp của container, mang class row -->
+            <div class="row">
+                <!-- cột 1 --> {{#each phim}}
+                <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                    <div class="card mb-3" id='movie item' style="max-width: 540px; ">
+                        <div class="row g-0">
+                            <div class="col-md-4">
+                                <img src="/images/{{IDPhim}}.png" class="img-fluid rounded-start" alt="...">
+                            </div>
+                            <div class="col-md-8">
+                                <div class="card-header">{{TenPhim}}</div>
+
+                                <div class="card-body">
+                                    <p class="card-text">{{DaoDien}}</p>
+                                    <p class="card-text"><small class="text-muted">Ngày khởi chiếu: 01/01/2001</small>
+                                    </p>
+                                    <button class="btn btn-info" onclick="movieInfoPage({{IDPhim}})">Chi tiết</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                {{/each}}
+
+            </div> <!-- Kết thúc dòng 1 -->
+        </div>
+    </div>
 </body>
 <script src="/javascripts/user.js"></script>
+
 </html>
