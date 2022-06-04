@@ -1,4 +1,5 @@
 var express = require('express');
+const res = require('express/lib/response');
 var router = express.Router();
 
 const moviesController = require('../controllers/movies.controller')
@@ -66,5 +67,4 @@ request: none
 response: {code,msg}
 */
 router.get('/:id', moviesController.getMovie)
-
 module.exports = router;

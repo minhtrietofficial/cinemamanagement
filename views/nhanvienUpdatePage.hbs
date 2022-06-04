@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {{#each movie}}
+        <form action="">
+        <label for="">Tên phim</label>
+        <input type="text" id="tenphim" value="{{TenPhim}}">
+        <label for="">Đạo diễn</label>
+        <input type="text" name="" id="daodien" value="{{DaoDien}}">
+        <label for="">Thể loại</label>
+        <input type="text" name="" id="theloai" value="{{TheLoai}}">
+        <label for="">Nhà phát hành</label>
+        <input type="text" name="" id="nhaphathanh" value="{{NhaPhatHanh}}">
+        <label for="">Khởi chiếu</label>
+        <input type="date" name="" id="khoichieu" value="{{KhoiChieu}}">
+        <label for="">Kết thúc</label>
+        <input type="date" id="ketthuc" value="{{KetThuc}}">
+        <label for="">Thời lượng</label>
+        <input type="text" name="" id="thoiluong" value="{{ThoiLuong}}">
+        <label for="">Ngôn ngữ</label>
+        <input type="text" name="" id="ngonngu" value="{{NgonNgu}}">
+        <label for="">Giới hạn đối tượng</label>
+        <input type="text" name="" id="rated" value="{{Rated}}">
+        <label for="">Năm sản xuất</label>
+        <input type="text" name="" id="nsx" value="{{NSX}}">
+        </form>
+        <div id="message" style="display: none"></div>
+        <div>
+            <button onclick="updateMovie({{IDPhim}})">Cập nhật</button>
+            <button onclick="cancelUpdate()">Hủy</button>
+        </div>
+    {{/each}}
+</body>
+<script src="/javascripts/nhanvien.js"></script>
+</html>

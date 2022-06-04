@@ -23,10 +23,10 @@ class movies{
         DBConnection.query(query, [TenPhim,DaoDien,TheLoai,NhaPhatHanh,KhoiChieu,KetThuc,ThoiLuong,NgonNgu,Rated,NSX], (err,result,fields) => {
             if(err){
                 console.log(err)
-                return res.json({code: 500, msg: 'Server error'})
+                return res.send(JSON.stringify({code: 500, msg: 'Server error'}))
             }
             else{
-                return res.json({code: 200, msg: 'movie added'})
+                return res.send(JSON.stringify({code: 200, msg: 'movie added'}))
             }
         })
     }
@@ -130,11 +130,11 @@ class movies{
         DBConnection.query(checkID,[IDPhim], (err,result,fields) => {
             if(err){
                 console.log(err)
-                return res.json({code: 500, msg: 'Server error'})
+                return res.send(JSON.stringify({code: 500, msg: 'Server error'}))
             }
             else{
                 if(!result[0]){
-                    return res.json({code: 404, msg: 'movie ID not exist'})
+                    return res.send(JSON.stringify({code: 404, msg: 'movie ID not exist'}))
                 }
                 else{
                     const getMovieQuery = `SELECT * FROM phim WHERE IDPhim = ?`
@@ -142,10 +142,10 @@ class movies{
                     DBConnection.query(getMovieQuery,[IDPhim], (err,result,fields) => {
                         if(err){
                             console.log(err)
-                            return res.json({code: 500, msg: 'Server error'})
+                            return res.send(JSON.stringify({code: 500, msg: 'Server error'}))
                         }
                         else{
-                            return res.json({movie: result[0]})
+                            return res.send(JSON.stringify({movie: result[0]}))
                         }
                     })
                 }

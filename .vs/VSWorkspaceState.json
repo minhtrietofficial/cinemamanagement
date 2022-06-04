@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\controllers",
+    "\\public",
+    "\\public\\images",
+    "\\public\\javascripts",
+    "\\public\\stylesheets",
+    "\\public\\stylesheets\\login",
+    "\\views"
+  ],
+  "SelectedNode": "\\public\\javascripts\\signup.js",
+  "PreviewInSolutionExplorer": false
+}
