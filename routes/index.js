@@ -4,6 +4,7 @@ const accountRouter = require('./account')
 const moviesRouter = require('./movies')
 const scheduleRouter = require('./schedule')
 const nhanvienRouter = require('./nhanvien')
+const userRouter = require('./user')
 
 function routes(app){
 
@@ -23,9 +24,7 @@ function routes(app){
   
   app.use('/schedule', scheduleRouter)
 
-  app.get('/', function(req, res, next) {
-    res.render('index', { title: 'Express' });
-  });
+  app.use('/user', userRouter)
 
 }
 module.exports = routes;

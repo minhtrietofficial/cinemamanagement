@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/user.css">
+</head>
+<body>
+    <a href="/">Quay lại</a>
+    <h4>Suất chiếu hiện có</h4>
+    {{#each lichchieu}}
+    <div id="lichchieu" onclick="ghelichchieu({{IDLichChieu}})">
+        <div>
+            Ngày Chiếu: {{NgayChieu}}
+        </div>
+        <div>
+            Giờ Chiếu: {{ThoiGianBatDau}} - {{ThoiGianketThuc}}
+        </div>
+    </div>
+    {{/each}}
+    
+</body>
+<script src="/javascripts/user.js"></script>
+</html>
+

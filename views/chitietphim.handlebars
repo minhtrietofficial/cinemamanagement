@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/user.css">
+</head>
+<body>
+    <a href="">Quay lại</a>
+    
+    {{#each phim}}
+    <div id="movieInfo">
+        <div>
+            <img src="/images/{{IDPhim}}.png" alt="">
+        </div>
+        <div>
+            Tên Phim: {{TenPhim}}
+        </div>
+        <div>
+            Thể loại: {{TheLoai}}
+        </div>
+        <div>
+            Rated: {{Rated}}
+        </div>
+        <div>
+            Nhà phát hành: {{NhaPhatHanh}}
+        </div>
+        <div>
+            Năm sản xuất: {{NSX}}
+        </div>
+        <div>
+            Khởi Chiếu: {{KhoiChieu}}
+        </div>
+        <button onclick="lichchieu({{IDPhim}})">Đặt vé</button>
+    </div>
+    {{/each}}
+    
+</body>
+<script src="/javascripts/user.js"></script>
+</html>
