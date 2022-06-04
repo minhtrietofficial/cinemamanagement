@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Chi tiết buổi chiếu</title>
     <link rel="stylesheet" href="/stylesheets/nhanvien.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 </head>
+
 <body>
     <div id="modal-bg"></div>
     <div id="modal-box">
@@ -16,46 +26,94 @@
             <button id="modal-close">Đóng</button>
         </div>
     </div>
-
-    <div>
-            <form action="">
-                <label for="">Phim</label>
-                <select name="" id="phim">
-                    {{#each lichchieu}}
-                    <option value="{{IDPhim}},{{TenPhim}}">{{TenPhim}}</option>
-                    {{/each}}
-                    {{#each phim}}
-                        <option value="{{IDPhim}},{{TenPhim}}">{{TenPhim}}</option>
-                    {{/each}}
-                </select>
-                <label for="">Phòng chiếu</label>
-                <select name="" id="phongchieu">
-                    {{#each lichchieu}}
-                    <option value="{{IDPhongChieu}},{{TenPhongChieu}}">{{TenPhongChieu}}</option>
-                    {{/each}}
-                    {{#each phongchieu}}
-                        <option value="{{IDPhongChieu}}">{{TenPhongChieu}}</option>
-                    {{/each}}
-                </select>
-                {{#each lichchieu}}
-                <label for="">Thời gian bắt đầu</label>
-                <input type="time" name="" id="thoigianbatdau" value="{{ThoiGianBatDau}}">
-                <label for="">Thời gian kết thúc</label>
-                <input type="time" name="" id="thoigianketthuc" value="{{ThoiGianketThuc}}">
-                <label for="">Ngày Chiếu</label>
-                <input type="date" name="" id="ngaychieu" value="{{NgayChieu}}">
-                <label for="">Giá vé</label>
-                <input type="number" name="" id="giave" value="{{GiaVe}}">
-                <label for="">Hình thức</label>
-                <input type="text" name="" id="hinhthuc" value="{{HinhThuc}}">
-                {{/each}}
-            </form>
-            <div>
-                <button onclick="updateLichChieu({{#each lichchieu}}{{IDLichChieu}},{{IDPhongChieu}}{{/each}})">Cập nhật</button>
-                <button onclick="cancelUpdateLichChieu()">Hủy</button>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="d-flex justify-content-center m-3">
+                <h1>Chi tiết</h1>
             </div>
-            <div id="message" style="display: none"></div>
+            <div class="wrapper border border-success">
+                <form class="form" action="">
+
+                    <div class="form-group">
+                        <label for="">Phim</label>
+                        <select class="form-control" name="" id="phim">
+                            {{#each lichchieu}}
+                            <option value="{{IDPhim}},{{TenPhim}}">{{TenPhim}}</option>
+                            {{/each}}
+                            {{#each phim}}
+                            <option value="{{IDPhim}},{{TenPhim}}">{{TenPhim}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="">Phòng chiếu</label>
+                        <select class="form-control" name="" id="phongchieu">
+                            {{#each lichchieu}}
+                            <option value="{{IDPhongChieu}},{{TenPhongChieu}}">{{TenPhongChieu}}</option>
+                            {{/each}}
+                            {{#each phongchieu}}
+                            <option value="{{IDPhongChieu}}">{{TenPhongChieu}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+
+
+                    <div class="form-group">
+                        {{#each lichchieu}}
+
+
+                        <label for="">Thời gian bắt đầu</label>
+                        <input class="form-control" type="time" name="" id="thoigianbatdau" value="{{ThoiGianBatDau}}">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Thời gian kết thúc</label>
+                        <input class="form-control" type="time" name="" id="thoigianketthuc"
+                            value="{{ThoiGianketThuc}}">
+                    </div>
+                    <div class="form-group">
+
+                        <label for="">Ngày Chiếu</label>
+                        <input class="form-control" type="date" name="" id="ngaychieu" value="{{NgayChieu}}">
+                    </div>
+
+                    <div class="form-group">
+
+                        <label for="">Giá vé</label>
+                        <input class="form-control" type="number" name="" id="giave" value="{{GiaVe}}">
+
+                    </div>
+
+
+
+
+
+                    <div class="form-group">
+                        <label for="">Hình thức</label>
+                        <select class="form-control" name="" id="hinhthuc">
+                            <option value="2D">2D</option>
+                            <option value="3D">3D</option>
+                            <option value="4DX">4DX</option>
+                            <option value="IMAX">IMAX</option>
+
+                        </select>
+                    </div>
+                    {{/each}}
+                </form>
+                <div class="form-group d-flex justify-content-end">
+                    <button class="btn btn-warning m-2"
+                        onclick="updateLichChieu({{#each lichchieu}}{{IDLichChieu}},{{IDPhongChieu}}{{/each}})">Cập
+                        nhật</button>
+                    <button class="btn btn-danger m-2" onclick="cancelUpdateLichChieu()">Hủy</button>
+                </div>
+                <div id="message" style="display: none"></div>
+            </div>
+        </div>
+
     </div>
+
 </body>
 <script src="/javascripts/nhanvien.js"></script>
+
 </html>
