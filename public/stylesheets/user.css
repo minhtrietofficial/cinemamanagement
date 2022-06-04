@@ -1,18 +1,4 @@
-#movie img{
 
-    height:200px;
-    width:auto;/*maintain aspect ratio*/
-    max-width:500px;
-
-}
-
-#movieInfo img{
-
-    height:300px;
-    width:auto;/*maintain aspect ratio*/
-    max-width:500px;
-
-}
 
 #lichchieu:hover{
     cursor: pointer;
