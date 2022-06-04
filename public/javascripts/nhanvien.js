@@ -49,9 +49,11 @@ function submitMovie(){
     let rated = document.getElementById('rated').value
     let nsx = document.getElementById('nsx').value
 
+    let file = document.querySelector("#file").files
+
     let errMsg = document.getElementById('message')
 
-    if(tenphim == '' || daodien == '' || nhaphathanh == '' || theloai == '' || khoichieu == '' || ketthuc == '' || thoiluong == '' || ngonngu == ''|| rated == '' || nsx == ''){
+    if(tenphim == '' || daodien == '' || nhaphathanh == '' || theloai == '' || khoichieu == '' || ketthuc == '' || thoiluong == '' || ngonngu == ''|| rated == '' || nsx == '' || file.length == 0){
         errMsg.style.display = 'block'
         errMsg.innerText = 'Vui lòng điền đầy đủ thông tin'
         return false
@@ -74,7 +76,26 @@ function submitMovie(){
     }).then(res => res.json())
     .then(json => {
         if(json.code == 200){
-            window.location.replace('/nhanvien')
+            let formData = new FormData();
+    
+            formData.append('image', file[0]);
+            formData.append('id', json.id);
+
+            console.log(file[0])
+
+            fetch('/upload', {
+                method: 'POST',
+                body: formData
+            }).then(res => res.json())
+            .then(json => {
+                if(json.code == 200){
+                    window.location.replace('/nhanvien')
+                }
+                else{
+                    alert('Something went wrong')
+                }
+            })
+            
         }
         else{
             errMsg.style.display = 'block'
@@ -93,8 +114,10 @@ function updateMovie(IDPhim){
     let ketthuc = document.getElementById('ketthuc').value
     let thoiluong = document.getElementById('thoiluong').value
     let ngonngu = document.getElementById('ngonngu').value
-    let rated = document.getElementById('rated')
+    let rated = document.getElementById('rated').value
     let nsx = document.getElementById('nsx').value
+
+    let file = document.querySelector("#file").files
 
     let errMsg = document.getElementById('message')
 
@@ -122,7 +145,30 @@ function updateMovie(IDPhim){
     }).then(res => res.json())
     .then(json => {
         if(json.code == 200){
+            if(file.length == 0){
             window.location.replace('/nhanvien')
+            }
+            else{
+                let formData = new FormData();
+    
+                formData.append('image', file[0]);
+                formData.append('id', IDPhim);
+
+                console.log(file[0])
+
+                fetch('/upload', {
+                method: 'POST',
+                body: formData
+                }).then(res => res.json())
+                .then(json => {
+                    if(json.code == 200){
+                        window.location.replace('/nhanvien')
+                    }
+                    else{
+                     alert('Something went wrong')
+                    }
+                })
+            }
         }
         else{
             errMsg.style.display = 'block'

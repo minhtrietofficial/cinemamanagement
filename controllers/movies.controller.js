@@ -1,6 +1,7 @@
-const { query } = require('express')
 const DBConnection = require('../DB')
 
+const fs = require('fs')
+const path = require('path') 
 class movies{
     add(req,res){
         let TenPhim = req.body.tenphim
@@ -26,7 +27,7 @@ class movies{
                 return res.send(JSON.stringify({code: 500, msg: 'Server error'}))
             }
             else{
-                return res.send(JSON.stringify({code: 200, msg: 'movie added'}))
+                return res.send(JSON.stringify({code: 200, msg: 'movie added', id: result.insertId}))
             }
         })
     }
@@ -79,6 +80,16 @@ class movies{
 
     delete(req,res){
         let IDPhim = req.body.id
+        let link = path.join(__dirname,'../public/images/'+IDPhim+'.png')
+        console.log(link)
+        fs.unlink(link, (err) => {
+            if (err) {
+              console.error(err)
+              return
+            }
+        })
+        
+        
 
         const checkID = `SELECT * FROM phim WHERE IDPhim = ?`
 
