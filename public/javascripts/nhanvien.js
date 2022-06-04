@@ -59,6 +59,12 @@ function submitMovie(){
         return false
     }
 
+    if(khoichieu > ketthuc){
+        errMsg.style.display = 'block'
+        errMsg.innerText = 'Thời gian khởi chiếu và kết thúc không hợp lệ'
+        return false
+    }
+
     fetch('/movies', {
         method: 'POST',
         body: new URLSearchParams({
@@ -127,6 +133,12 @@ function updateMovie(IDPhim){
         return false
     }
 
+    if(khoichieu > ketthuc){
+        errMsg.style.display = 'block'
+        errMsg.innerText = 'Thời gian khởi chiếu và kết thúc không hợp lệ'
+        return false
+    }
+    
     fetch('/movies', {
         method: 'PUT',
         body: new URLSearchParams({

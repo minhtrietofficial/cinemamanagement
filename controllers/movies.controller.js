@@ -19,17 +19,31 @@ class movies{
             return res.json({code: 412, msg: 'Missing params'})
         }
 
-        const query = `INSERT INTO phim(TenPhim,DaoDien,TheLoai,NhaPhatHanh,KhoiChieu,KetThuc,ThoiLuong,NgonNgu,Rated,NSX) VALUES(?,?,?,?,?,?,?,?,?,?)`
-
-        DBConnection.query(query, [TenPhim,DaoDien,TheLoai,NhaPhatHanh,KhoiChieu,KetThuc,ThoiLuong,NgonNgu,Rated,NSX], (err,result,fields) => {
-            if(err){
+        DBConnection.query(`SELECT * FROM phim WHERE TenPhim = '${TenPhim}'`, (err,result) =>{
+            if(err) {
                 console.log(err)
                 return res.send(JSON.stringify({code: 500, msg: 'Server error'}))
             }
             else{
-                return res.send(JSON.stringify({code: 200, msg: 'movie added', id: result.insertId}))
+                if(result.length > 0){
+                    return res.send(JSON.stringify({code: 409, msg: 'Tên phim đã tồn tại'}))
+                }
+                else{
+                    const query = `INSERT INTO phim(TenPhim,DaoDien,TheLoai,NhaPhatHanh,KhoiChieu,KetThuc,ThoiLuong,NgonNgu,Rated,NSX) VALUES(?,?,?,?,?,?,?,?,?,?)`
+
+                    DBConnection.query(query, [TenPhim,DaoDien,TheLoai,NhaPhatHanh,KhoiChieu,KetThuc,ThoiLuong,NgonNgu,Rated,NSX], (err,result,fields) => {
+                        if(err){
+                            console.log(err)
+                            return res.send(JSON.stringify({code: 500, msg: 'Server error'}))
+                        }
+                        else{
+                            return res.send(JSON.stringify({code: 200, msg: 'movie added', id: result.insertId}))
+                        }
+                    })
+                }
             }
         })
+        
     }
 
     modify(req,res){
