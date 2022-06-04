@@ -5,6 +5,10 @@ var {engine} = require('express-handlebars')
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+const session = require('express-session')
+
+
+
 var routes= require('./routes/index');
 
 var app = express();
@@ -14,6 +18,18 @@ var app = express();
 app.engine('handlebars', engine())
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'handlebars');
+
+
+app.use(
+  session({
+    secret: 'secret',
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+      maxAge: 1000 * 60 * 60 * 24 * 7,
+    },
+  })
+);
 
 app.use(logger('dev'));
 app.use(express.json());

@@ -5,6 +5,14 @@ var router = express.Router();
 const nhanvienController = require('../controllers/nhanvien.controller')
 
 
+router.use((req,res,next)=>{
+    if(req.session.role == 0){
+        res.redirect('/user')
+    }
+    else{
+        next()
+    }
+})
 
 router.get('/add', nhanvienController.addPage)
 

@@ -93,7 +93,7 @@ class schedule{
                 res.send(JSON.stringify({code: 500}))
             }
             else{
-                DBConnection.query(`DELETE FROM ghephongchieu WHERE IDLichChieu = ${IDLichChieu}`)
+                DBConnection.query(`DELETE FROM ghelichchieu WHERE IDLichChieu = ${IDLichChieu}`)
                 res.send(JSON.stringify({code: 200}))
             }
         })

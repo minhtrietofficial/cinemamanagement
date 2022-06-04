@@ -4,33 +4,85 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Thêm</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/stylesheets/nhanvien.css">
 </head>
 <body>
-    <form action="">
-        <label for="">Tên phim</label>
-        <input type="text" id="tenphim">
-        <label for="">Đạo diễn</label>
-        <input type="text" name="" id="daodien">
-        <label for="">Thể loại</label>
-        <input type="text" name="" id="theloai">
-        <label for="">Nhà phát hành</label>
-        <input type="text" name="" id="nhaphathanh">
-        <label for="">Khởi chiếu</label>
-        <input type="date" name="" id="khoichieu">
-        <label for="">Kết thúc</label>
-        <input type="date" id="ketthuc">
-        <label for="">Thời lượng</label>
-        <input type="text" name="" id="thoiluong">
-        <label for="">Ngôn ngữ</label>
-        <input type="text" name="" id="ngonngu">
-        <label for="">Giới hạn đối tượng</label>
-        <input type="text" name="" id="rated">
-        <label for="">Năm sản xuất</label>
-        <input type="text" name="" id="nsx">
-    </form>
-    <div id="message" style="display: none"></div>
-    <div><button onclick="submitMovie()">Xác nhận</button></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <h1 class="text-center">thêm</h1>
+            <div class="wrapper">
+                
+                <form class="form" action="">
+                    <div class="form-group">
+                        <label for="tenphim">Tên phim</label>
+                        <input class="input" type="text" id="tenphim">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="daodien">Đạo diễn</label>
+                        <input class="input" type="text" name="" id="daodien">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="theloai">Thể loại</label>
+                        <input class="input" type="text" name="" id="theloai">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nhaphathanh">Nhà phát hành</label>
+                    <input class="input" type="text" name="" id="nhaphathanh">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="khoichieu">Khởi chiếu</label>
+                    <input class="input" type="date" name="" id="khoichieu">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ketthuc">Kết thúc</label>
+                    <input class="input" type="date" id="ketthuc">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="thoiluong">Thời lượng</label>
+                    <input class="input" type="text" name="" id="thoiluong">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="ngonngu">Ngôn ngữ</label>
+                    <input class="input" type="text" name="" id="ngonngu">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Giới hạn đối tượng</label>
+                    <input class="input" type="text" name="" id="rated">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Năm sản xuất</label>
+                        <input class="input" type="text" name="" id="nsx">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="">Hình</label>
+                        <input class="input" type="file" name="" id="file">
+                    </div>
+                </form>
+                <div id="message" style="display: none"></div>
+                <div>
+                    <button class="btn_Update" onclick="submitMovie()">Xác nhận</button>
+                    <button class="btn_Cancle" onclick="cancelUpdate()">Hủy</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
 </body>
 <script src="/javascripts/nhanvien.js"></script>
 </html>

@@ -1,7 +1,11 @@
+const session = require('express-session')
+const { render } = require('../app')
 const DBConnection = require('../DB')
 
 class user{
     homePage(req,res){
+        req.session.seats = ''
+        req.session.IDLichChieu = ''
         DBConnection.query(`SELECT IDPhim,TenPhim FROM lichchieu GROUP BY IDPhim`, (err,result) => {
             if(err){
                 console.log(err)
@@ -30,7 +34,9 @@ class user{
     }
 
     lichchieuPage(req,res){
+        
         let IDPhim = req.params.IDPhim
+
         DBConnection.query(`SELECT * FROM lichchieu WHERE IDPhim = ${IDPhim}`, (err,result) => {
             if(err){
                 console.log(err)
@@ -42,7 +48,11 @@ class user{
     }
 
     gheLichChieuPage(req,res){
+        
         let IDLichChieu = req.params.IDLichChieu
+
+        req.session.IDLichChieu = IDLichChieu
+        
         DBConnection.query(`SELECT * FROM ghelichchieu WHERE IDLichChieu = ${IDLichChieu} ORDER BY SoGhe ASC`, (err,result) => {
             if(err){
                 console.log(err)
@@ -74,6 +84,62 @@ class user{
                         }
                     }})
             }
+        })
+    }
+
+    checkout(req,res){
+        if(!req.session.IDLichChieu || !req.session.seats)
+        {
+            return res.redirect('/user')
+        }
+        
+        DBConnection.query(`SELECT * FROM taikhoan WHERE Email = '${req.session.email}'`, (err,result) => {
+            if(err){
+                console.log(err)
+            }
+            else{
+                DBConnection.query(`SELECT * FROM lichchieu WHERE IDLichChieu = ${req.session.IDLichChieu}`, (err,LichChieu) => {
+                    if(err){
+                        console.log(err)
+                    }
+                    else{
+                        return res.render('checkout', {nguoidung: result, lichchieu: LichChieu, ghe: req.session.seats, tong: parseInt(LichChieu[0].GiaVe) * req.session.seats.length})
+                    }
+                })
+            }
+        })
+    }
+
+    history(req,res){
+        DBConnection.query(`SELECT * FROM ve WHERE Email = 'An@gmail.com'`, (err,result) => {
+            if(err) console.log(err)
+            else return res.render('history', {ve: result})
+        })
+    }
+
+    thongtinve(req,res){
+        DBConnection.query(`SELECT * FROM ve WHERE IDVe = ${req.query.IDVe}`, (err,result) => {
+            if (err) {
+                console.log(err)
+            }
+            else{
+                DBConnection.query(`SELECT * FROM lichchieu WHERE IDLichChieu = ${req.query.IDLichChieu}`, (err,lich) => {
+                    if(err){
+                        console.log(err)
+                    }
+                    else{
+                        DBConnection.query(`SELECT * FROM taikhoan WHERE Email = '${req.session.email}'`, (err,tk) => {
+                            if(err){
+                                console.log(err)
+                            }
+                            else{
+                                return res.render('thongtinve', {ve: result, lichchieu: lich, taikhoan: tk})
+                            }
+                        })
+                    }
+                })
+            }
+            
         })
     }
 }

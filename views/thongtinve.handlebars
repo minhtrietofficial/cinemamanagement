@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Thông tin vé
+    <div>
+        Vé
+        <div>
+            {{#each taikhoan}}
+            Họ tên người đặt: {{HoTen}}
+            Số điện thoại: {{SoDienThoai}}
+            Email: {{Email}}
+            {{/each}}
+            {{#each ve}}
+            Số ghế: {{SoGhe}}
+            Thời Gian Đặt: {{NgayDat}}
+            {{/each}}
+        </div>
+    </div>
+</body>
+<script src="/javascripts/user.js"></script>
+</html>

@@ -21,7 +21,7 @@ document.getElementById('loginForm').addEventListener('submit', (e) => {
     }).then(res => res.json())
     .then(json => {
         if(json.code == 200){
-            window.location.replace('/')
+            window.location.replace('/user')
         }
         else{
             errMsg.style.display = 'block'

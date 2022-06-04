@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    Lịch sử mua vé:
+    <table>
+        <thead>
+            <th>ID vé</th>
+            <th>Email</th>
+            <th>Số Ghế</th>
+            <th>Thời gian đặt</th>
+        </thead>
+        <tbody>
+        {{#each ve}}
+        <tr onclick="thongTinVe({{IDVe}},{{IDLichChieu}})">
+            <td>{{IDVe}}</td>
+            <td>{{Email}}</td>
+            <td>{{SoGhe}}</td>
+            <td>{{NgayDat}}</td>
+        </tr>
+        {{/each}}
+        </tbody>
+    </table>
+    
+</body>
+<script src="/javascripts/user.js"></script>
+</html>

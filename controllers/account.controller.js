@@ -22,6 +22,8 @@ class account{
                     return res.send(JSON.stringify({code: 404, msg: 'User or Password is not correct'}))
                 }
                 else{
+                    req.session.role = result[0].LoaiTaiKhoan
+                    req.session.email = Email
                     return res.send(JSON.stringify({code: 200, msg: 'Success'}))
                 }
             }
@@ -79,6 +81,11 @@ class account{
             }
         })
 
+    }
+
+    logout(req,res){
+        req.session.destroy()
+        res.redirect('/login')
     }
 }
 

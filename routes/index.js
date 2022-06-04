@@ -5,6 +5,7 @@ const moviesRouter = require('./movies')
 const scheduleRouter = require('./schedule')
 const nhanvienRouter = require('./nhanvien')
 const userRouter = require('./user')
+const ticketRouter = require('./ticket')
 
 function routes(app){
 
@@ -16,9 +17,20 @@ function routes(app){
     res.render('signup')
   })
 
-  app.use('/nhanvien', nhanvienRouter)
-
   app.use('/account', accountRouter)
+
+  app.use((req,res,next) => {
+    if(!req.session.email){
+      return res.redirect('/login')
+    }
+    else{
+      next()
+    }
+  })
+
+  app.use('/ticket', ticketRouter)
+
+  app.use('/nhanvien', nhanvienRouter)
 
   app.use('/movies', moviesRouter)
   
@@ -26,5 +38,9 @@ function routes(app){
 
   app.use('/user', userRouter)
 
+  app.use('/logout', (req,res) => {
+    req.session.destroy()
+    return res.redirect('/login')
+  })
 }
 module.exports = routes;

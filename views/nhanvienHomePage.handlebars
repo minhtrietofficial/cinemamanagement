@@ -4,28 +4,40 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Nhân viên Home Page</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="/stylesheets/nhanvien.css">
 </head>
 <body>
     <div id="modal-bg"></div>
-    <div id="modal-box">
-        <div id="modal-message"></div>
-        <div>
-            <button id="modal-confirm">Xác nhận</button>
-            <button id="modal-close">Đóng</button>
-        </div>
+    <div id="modal-box" >
+        
+            <div id="modal-message"></div>
+            <div>
+                <button class="btn_modal" id="modal-confirm">Xác nhận</button>
+                <button class="btn_modal" id="modal-close">Đóng</button>
+            </div>
+        
     </div>
-    <table>
-        <thead>
-            <th>ID</th>
-            <th>Tên phim</th>
-            <th>Nhà phát hành</th>
-            <th>Khởi chiếu</th>
-            <th>Kết thúc</th>
-            <th></th>
-        </thead>
-        <tbody id="phim">
+    <div class="container">
+    <div class="row justify-content-center">
+        
+            <h1 class="text-center">Nhân viên Home Page</h1>
+            <table class="content-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên phim</th>
+                        <th>Nhà phát hành</th>
+                        <th>Khởi chiếu</th>
+                        <th>Kết thúc</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody id="phim">
             {{#each phim}}
                 <tr >
                     <td onclick="infomationPage({{IDPhim}})">{{IDPhim}}</td>
@@ -33,12 +45,15 @@
                     <td onclick="infomationPage({{IDPhim}})">{{NhaPhatHanh}}</td>
                     <td onclick="infomationPage({{IDPhim}})">{{KhoiChieu}}</td>
                     <td onclick="infomationPage({{IDPhim}})">{{KetThuc}}</td>
-                    <td><button onclick="modalConfirm({{IDPhim}})">delete</button></td>
+                    <td><button class="btn_Delete" onclick="modalConfirm({{IDPhim}})">Delete</button></td>
                 </tr>
             {{/each}}
         </tbody>
-    </table>
-    <a href="/nhanvien/add">Thêm</a>
+                </tbody>
+            </table>
+            <a class="link" href="/nhanvien/add">Thêm</a>
+        
+    </div>
 </body>
 <script src="/javascripts/nhanvien.js"></script>
 </html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <div>
+            Người đặt vé:
+            <div>
+                {{#each nguoidung}}
+                Họ Tên: {{HoTen}}
+                Email: {{Email}}
+                Số điện thoại: {{SoDienThoai}}
+                {{/each}}
+            </div>
+            <div>
+            Thông tin vé:
+            {{#each lichchieu}}
+                Tên Phim : {{TenPhim}}
+                Thời gian bắt đầu : {{ThoiGianBatDau}}
+                Thời gian kết thúc: {{ThoiGianKetThuc}}
+                Ngày chiếu : {{ NgayChieu }}
+                Giá vé : {{GiaVe}}
+                Tên Phim: {{TenPhim}}
+            {{/each}}
+            Ghế đặt:
+            {{#each ghe}}
+                <div> - {{this}} - </div>
+            {{/each}}
+            Tổng tiền: {{tong}}
+            </div>
+        </div>
+    </div>
+    <div>
+        <button onclick="confirmDatVe({{#each lichchieu}}{{IDPhim}}{{/each}})">Xác nhận</button>
+    </div>
+    <div>
+        <button onclick="cancelDatVe()">Hủy</button>
+    </div>
+</body>
+<script src="/javascripts/user.js"></script>
+</html>
