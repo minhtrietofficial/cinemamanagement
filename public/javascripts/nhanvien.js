@@ -200,6 +200,11 @@ function modalLichChieuConfirm(IDLichChieu){
         document.getElementById('modal-bg').style.display = 'none'
         document.getElementById('modal-box').style.display = 'none'
     })
+        
+    document.getElementById('modal-close1').addEventListener('click', (e) => {
+        document.getElementById('modal-bg').style.display = 'none'
+        document.getElementById('modal-box').style.display = 'none'
+    })
 
     document.getElementById('modal-confirm').addEventListener('click', (e) => {
         fetch('/schedule', {
