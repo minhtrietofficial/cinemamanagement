@@ -119,9 +119,9 @@ class schedule{
         
 
         if(IDPhongChieu == 'no'){
-            const updateScheduleQuery = `UPDATE lichchieu SET IDPhim = ?,ThoiGianBatDau = ?,ThoiGianketThuc = ?,NgayChieu = ?,GiaVe = ?,HinhThuc = ?,TenPhim = ?`
+            const updateScheduleQuery = `UPDATE lichchieu SET IDPhim = ?,ThoiGianBatDau = ?,ThoiGianketThuc = ?,NgayChieu = ?,GiaVe = ?,HinhThuc = ?,TenPhim = ? WHERE IDPhim = ?`
 
-            DBConnection.query(updateScheduleQuery, [IDPhim,ThoiGianBatDau,ThoiGianKetThuc,NgayChieu,GiaVe,HinhThuc,TenPhim], (err,result,fields) => {
+            DBConnection.query(updateScheduleQuery, [IDPhim,ThoiGianBatDau,ThoiGianKetThuc,NgayChieu,GiaVe,HinhThuc,TenPhim,IDPhim], (err,result,fields) => {
                 if(err){
                     console.log(err)
                     return res.send(JSON.stringify({code: 500, msg: 'Server error'}))
