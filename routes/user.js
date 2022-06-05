@@ -22,8 +22,6 @@ router.get('/ghelichchieu/:IDLichChieu', userController.gheLichChieuPage)
 
 router.get('/lichchieu/:IDPhim', userController.lichchieuPage)
 
-router.get('/history', userController.historyPage)
-
 router.get('/:IDPhim', userController.movieInfoPage)
 
 router.get('/', userController.homePage)

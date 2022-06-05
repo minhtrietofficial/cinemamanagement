@@ -1,1 +1,3 @@
-fetch('http://localhost:3000/movies').then(res => console.log(res))
+
+
+console.log(numberWithCommas(1000000))

@@ -17,10 +17,6 @@ class user{
         
     }
 
-    historyPage(req,res){
-        res.render('history')
-    }
-
     movieInfoPage(req,res){
         let IDPhim = req.params.IDPhim
         DBConnection.query(`SELECT * FROM phim WHERE IDPhim = ${IDPhim}`, (err,result) => {
@@ -133,7 +129,11 @@ class user{
                                 console.log(err)
                             }
                             else{
-                                return res.render('thongtinve', {ve: result, lichchieu: lich, taikhoan: tk})
+                                return res.render('thongtinve', {ve: result, lichchieu: lich, taikhoan: tk, helpers: {
+                                    price(x) {
+                                        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                                    }
+                                }})
                             }
                         })
                     }

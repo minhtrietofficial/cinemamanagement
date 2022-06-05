@@ -59,7 +59,11 @@ class nhanvien{
                 return res.send(JSON.stringify({code: 500, msg: 'Server error'}))
             }
             else{
-                res.render('nhanvienLichChieu', {lichchieu: result})
+                res.render('nhanvienLichChieu', {lichchieu: result,helpers: {
+                    price(x) {
+                        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                    }
+                }})
             }
         })
     }
