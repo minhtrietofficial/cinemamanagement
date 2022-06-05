@@ -3,6 +3,7 @@ var router = express.Router();
 
 const scheduleController = require('../controllers/schedule.controller')
 
+router.post('/checktime', scheduleController.checkTime)
 /*GET "/schedule"*/
 router.get('/', scheduleController.getMovieSchedule)
 
@@ -12,5 +13,6 @@ router.post('/', scheduleController.addSchedule)
 router.put('/', scheduleController.updateSchedule)
 
 router.delete('/', scheduleController.delete)
+
 
 module.exports = router;

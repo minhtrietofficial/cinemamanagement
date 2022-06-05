@@ -247,8 +247,6 @@ function updateLichChieu(IDLichChieu,IDPC){
     let msg = document.getElementById('message')
 
    
-    console.log(IDPhongChieu)
-    console.log(TenPhongChieu)
     if(TenPhim == ''|| IDPhim == ''|| IDPhongChieu == ''|| ThoiGianBatDau == ''|| ThoiGianKetThuc == ''|| NgayChieu == ''|| GiaVe == '' || HinhThuc == '' || TenPhongChieu == ''){
         msg.style.display = 'block'
         msg.innerText = 'Vui lòng không để trống thông tin'
@@ -275,26 +273,42 @@ function updateLichChieu(IDLichChieu,IDPC){
         IDPhongChieu = 'no'
     }
 
-    
-    
-    fetch('/schedule', {
-        method: 'PUT',
+    fetch('/schedule/checktime', {
+        method: 'POST',
         body: new URLSearchParams({
-            idlichchieu: IDLichChieu,
-            idphim: IDPhim,
-            tenphim: TenPhim,
             thoigianbatdau: ThoiGianBatDau,
-            thoigianketthuc: ThoiGianKetThuc,
             ngaychieu: NgayChieu,
-            idphongchieu: IDPhongChieu,
-            tenphongchieu: TenPhongChieu,
-            giave: GiaVe,
-            hinhthuc: HinhThuc
+            thoigianketthuc: ThoiGianKetThuc,
+            idlichchieu: IDLichChieu
         })
     }).then(res => res.json())
     .then(json => {
         if(json.code == 200){
-            window.location.replace('/nhanvien/lichchieu')
+            fetch('/schedule', {
+                method: 'PUT',
+                body: new URLSearchParams({
+                    idlichchieu: IDLichChieu,
+                    idphim: IDPhim,
+                    tenphim: TenPhim,
+                    thoigianbatdau: ThoiGianBatDau,
+                    thoigianketthuc: ThoiGianKetThuc,
+                    ngaychieu: NgayChieu,
+                    idphongchieu: IDPhongChieu,
+                    tenphongchieu: TenPhongChieu,
+                    giave: GiaVe,
+                    hinhthuc: HinhThuc
+                })
+            }).then(res => res.json())
+            .then(json => {
+                if(json.code == 200){
+                    window.location.replace('/nhanvien/lichchieu')
+                }
+                else{
+                    msg.style.display = 'block'
+                    msg.innerText = json.msg
+                    return false
+                }
+            })
         }
         else{
             msg.style.display = 'block'
@@ -302,6 +316,8 @@ function updateLichChieu(IDLichChieu,IDPC){
             return false
         }
     })
+    
+    
 }
 
 function addLichChieu(){
