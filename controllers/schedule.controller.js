@@ -111,7 +111,6 @@ class schedule{
         let GiaVe = req.body.giave
         let HinhThuc = req.body.hinhthuc
 
-        console.log(TenPhim)
         if(IDPhim == null || ThoiGianBatDau == null || ThoiGianKetThuc == null || NgayChieu == null || IDPhongChieu == null || GiaVe == null || HinhThuc == null || IDLichChieu == null || TenPhim == null || TenPhongChieu == null){
             return res.json({code: 412, msg: 'MISSING PARAMS'})
         }
@@ -119,9 +118,9 @@ class schedule{
         
 
         if(IDPhongChieu == 'no'){
-            const updateScheduleQuery = `UPDATE lichchieu SET IDPhim = ?,ThoiGianBatDau = ?,ThoiGianketThuc = ?,NgayChieu = ?,GiaVe = ?,HinhThuc = ?,TenPhim = ? WHERE IDPhim = ?`
+            const updateScheduleQuery = `UPDATE lichchieu SET IDPhim = ?,ThoiGianBatDau = ?,ThoiGianketThuc = ?,NgayChieu = ?,GiaVe = ?,HinhThuc = ?,TenPhim = ? WHERE IDLichChieu = ?`
 
-            DBConnection.query(updateScheduleQuery, [IDPhim,ThoiGianBatDau,ThoiGianKetThuc,NgayChieu,GiaVe,HinhThuc,TenPhim,IDPhim], (err,result,fields) => {
+            DBConnection.query(updateScheduleQuery, [IDPhim,ThoiGianBatDau,ThoiGianKetThuc,NgayChieu,GiaVe,HinhThuc,TenPhim,IDLichChieu], (err,result,fields) => {
                 if(err){
                     console.log(err)
                     return res.send(JSON.stringify({code: 500, msg: 'Server error'}))
@@ -132,8 +131,8 @@ class schedule{
             })
         }
         else{
-            const updateScheduleQuery = `UPDATE lichchieu SET IDPhim = ?,ThoiGianBatDau = ?,ThoiGianketThuc = ?,NgayChieu = ?,IDPhongChieu = ?,GiaVe = ?,HinhThuc = ?,TenPhim = ?,TenPhongChieu = ?`
-            DBConnection.query(updateScheduleQuery, [IDPhim,ThoiGianBatDau,ThoiGianKetThuc,NgayChieu,IDPhongChieu,GiaVe,HinhThuc,TenPhim,TenPhongChieu], (err,result,fields) => {
+            const updateScheduleQuery = `UPDATE lichchieu SET IDPhim = ?,ThoiGianBatDau = ?,ThoiGianketThuc = ?,NgayChieu = ?,IDPhongChieu = ?,GiaVe = ?,HinhThuc = ?,TenPhim = ?,TenPhongChieu = ? WHERE IDLichChieu = ?`
+            DBConnection.query(updateScheduleQuery, [IDPhim,ThoiGianBatDau,ThoiGianKetThuc,NgayChieu,IDPhongChieu,GiaVe,HinhThuc,TenPhim,TenPhongChieu, IDLichChieu], (err,result,fields) => {
                 if(err){
                     console.log(err)
                     return res.send(JSON.stringify({code: 500, msg: 'Server error'}))
@@ -142,7 +141,6 @@ class schedule{
 
                     DBConnection.query(`DELETE FROM ghephongchieu WHERE IDLichChieu = ${IDLichChieu}`)
 
-                    const addSeatSchedule = `INSERT INTO ghelichchieu VALUES(?,?,0)`
     
                     const getSeatRoom = `SELECT * FROM ghephongchieu WHERE IDPhongChieu = ?`
                     DBConnection.query(getSeatRoom, [IDPhongChieu], (err,result,fields) => {

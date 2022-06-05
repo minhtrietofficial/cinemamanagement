@@ -247,7 +247,8 @@ function updateLichChieu(IDLichChieu,IDPC){
     let msg = document.getElementById('message')
 
    
-
+    console.log(IDPhongChieu)
+    console.log(TenPhongChieu)
     if(TenPhim == ''|| IDPhim == ''|| IDPhongChieu == ''|| ThoiGianBatDau == ''|| ThoiGianKetThuc == ''|| NgayChieu == ''|| GiaVe == '' || HinhThuc == '' || TenPhongChieu == ''){
         msg.style.display = 'block'
         msg.innerText = 'Vui lòng không để trống thông tin'
