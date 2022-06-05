@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-6">
+            <h3 class="text-center text-secondary mb-3">Register</h3>
+            <form class="border rounded w-100 mb-5 mx-auto px-3 pt-3 bg-light" action="" method="POST"  >
+                <div class="form-group">
+                    <label  for="full_name">Full Name</label>
+                    <input type="text" class="form-control" id="full_name" name="full_name" placeholder="Enter full name">
+                    {{!-- <span class="text-danger"><?= $full_name_message ?? '' ?></span> --}}
+                </div>
+
+                <div class="form-group">
+                    <label  for="password">Password</label>
+                    <input type="password" class="form-control" id="pass" name="pass" placeholder="Enter password">
+                    {{!-- <span class="text-danger"><?= $full_name_message ?? '' ?></span> --}}
+                </div>
+
+                <div class="form-group">
+                    <label  for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Enter email">
+                    {{!-- <span class="text-danger"><?= $email_message ?? '' ?></span> --}}
+                </div>
+                <div class="form-group">
+                    <label  for="tel">Tel</label>
+                    <input type="text" class="form-control" id="tel" name="tel" placeholder="Enter tel">
+                    {{!-- <span class="text-danger"><?= $tel_message ?? '' ?></span> --}}
+                </div>
+                
+                
+                
+                
+                <div class="form-group">
+                    <button id="register-btn" type="submit" class="w-100 btn btn-success">Register</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
