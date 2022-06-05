@@ -18,8 +18,11 @@ class ticket{
         let seats = req.session.seats
         let IDLichChieu = req.session.IDLichChieu
 
+        console.log(IDPhim)
+        console.log(seats)
+        console.log(IDLichChieu)
         for(const x of seats){
-            DBConnection.query(`INSERT INTO ve(IDPhim,IDLichChieu,Email,SoGhe) VALUES (${IDPhim},${IDLichChieu},'${req.session.mail}','${x}')`, (err,result) => {
+            DBConnection.query(`INSERT INTO ve(IDPhim,IDLichChieu,Email,SoGhe) VALUES (${IDPhim},${IDLichChieu},'${req.session.email}','${x}')`, (err,result) => {
                 if(err){
                     console.log(err)
                 }

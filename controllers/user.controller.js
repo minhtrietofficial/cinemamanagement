@@ -107,7 +107,7 @@ class user{
     }
 
     history(req,res){
-        DBConnection.query(`SELECT * FROM ve WHERE Email = 'An@gmail.com'`, (err,result) => {
+        DBConnection.query(`SELECT * FROM ve WHERE Email = '${req.session.email}'`, (err,result) => {
             if(err) console.log(err)
             else return res.render('history', {ve: result})
         })
