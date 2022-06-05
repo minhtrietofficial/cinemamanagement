@@ -1,27 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="/stylesheets/user.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+        crossorigin="anonymous"></script>
 </head>
+
 <body>
-    <a href="/">Quay lại</a>
-    <h4>Suất chiếu hiện có</h4>
-    {{#each lichchieu}}
-    <div id="lichchieu" onclick="ghelichchieu({{IDLichChieu}})">
-        <div>
-            Ngày Chiếu: {{NgayChieu}}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/user">Trang chủ</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/user">Home</a>
+                    </li>
+                    {{!-- <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li> --}}
+
+                </ul>
+            </div>
         </div>
-        <div>
-            Giờ Chiếu: {{ThoiGianBatDau}} - {{ThoiGianketThuc}}
+    </nav>
+    <div class="container">
+        <div class="row justify-content-left">
+             <div class="d-flex justify-content-center m-3">
+                <h1>Suất chiếu hiện có</h1>
+            </div>
+            {{#each lichchieu}}
+            <div class="col-sm-4 col-md-4 col-lg-4 col-xl-3">
+                <div id="lichchieu" onclick="ghelichchieu({{IDLichChieu}})" class="card text-white bg-dark mb-3"
+                    style="max-width: 15rem;">
+                    <div class="card-header">{{NgayChieu}}</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{TenPhongChieu}} </h5>
+                        <p class="card-text">{{ThoiGianBatDau}} - {{ThoiGianketThuc}}
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
         </div>
     </div>
-    {{/each}}
-    
+
+
 </body>
 <script src="/javascripts/user.js"></script>
-</html>
 
+</html>
