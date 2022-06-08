@@ -43,6 +43,7 @@ function routes(app){
 
   app.use('/account', accountRouter)
 
+
   app.use((req,res,next) => {
     if(!req.session.email){
       return res.redirect('/login')
@@ -61,7 +62,7 @@ function routes(app){
   app.use('/schedule', scheduleRouter)
 
   app.use('/user', userRouter)
-
+  
   app.use('/logout', (req,res) => {
     req.session.destroy()
     return res.redirect('/login')

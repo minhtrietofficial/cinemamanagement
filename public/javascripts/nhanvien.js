@@ -356,23 +356,40 @@ function addLichChieu(){
         return false
     }
     
-    fetch('/schedule', {
+    fetch('/schedule/checktime', {
         method: 'POST',
         body: new URLSearchParams({
-            idphim: IDPhim,
-            tenphim: TenPhim,
             thoigianbatdau: ThoiGianBatDau,
-            thoigianketthuc: ThoiGianKetThuc,
             ngaychieu: NgayChieu,
-            idphongchieu: IDPhongChieu,
-            tenphongchieu: TenPhongChieu,
-            giave: GiaVe,
-            hinhthuc: HinhThuc
+            thoigianketthuc: ThoiGianKetThuc,
         })
     }).then(res => res.json())
     .then(json => {
         if(json.code == 200){
-            window.location.replace('/nhanvien/lichchieu')
+            fetch('/schedule', {
+                method: 'POST',
+                body: new URLSearchParams({
+                    idphim: IDPhim,
+                    tenphim: TenPhim,
+                    thoigianbatdau: ThoiGianBatDau,
+                    thoigianketthuc: ThoiGianKetThuc,
+                    ngaychieu: NgayChieu,
+                    idphongchieu: IDPhongChieu,
+                    tenphongchieu: TenPhongChieu,
+                    giave: GiaVe,
+                    hinhthuc: HinhThuc
+                })
+            }).then(res => res.json())
+            .then(json => {
+                if(json.code == 200){
+                    window.location.replace('/nhanvien/lichchieu')
+                }
+                else{
+                    msg.style.display = 'block'
+                    msg.innerText = json.msg
+                    return false
+                }
+            })
         }
         else{
             msg.style.display = 'block'
@@ -380,4 +397,6 @@ function addLichChieu(){
             return false
         }
     })
+    
+    
 }

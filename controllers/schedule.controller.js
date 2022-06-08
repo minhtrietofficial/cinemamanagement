@@ -175,28 +175,54 @@ class schedule{
         let NgayChieu = req.body.ngaychieu
         let IDLichChieu = req.body.idlichchieu
 
-        DBConnection.query(`SELECT * FROM lichchieu WHERE IDLichChieu != ${IDLichChieu} AND NgayChieu = '${NgayChieu}'`, (err,result) => {
-            if(err){
-                console.log(err)
-            }
-            else{
-                
-                if(result.length == 0){
-                    return res.send(JSON.stringify({code: 200}))
+        if(IDLichChieu){
+            DBConnection.query(`SELECT * FROM lichchieu WHERE IDLichChieu != ${IDLichChieu} AND NgayChieu = '${NgayChieu}'`, (err,result) => {
+                if(err){
+                    console.log(err)
                 }
                 else{
-                    for( let i=0;i<result.length;i++){
-                        if((result[i].ThoiGianBatDau < ThoiGianBatDau) && (result[i].ThoiGianketThuc > ThoiGianBatDau)){
-                            return res.send(JSON.stringify({code: 406, msg: `Thời gian chiếu trùng với lịch ID = ${result[i].IDLichChieu}`}))
-                        }
-                        if((result[i].ThoiGianBatDau < ThoiGianKetThuc) && (result[i].ThoiGianketThuc > ThoiGianKetThuc)){
-                            return res.send(JSON.stringify({code: 406,msg: `Thời gian chiếu trùng với lịch ID = ${result[i].IDLichChieu}`}))
-                        }
+                    
+                    if(result.length == 0){
+                        return res.send(JSON.stringify({code: 200}))
                     }
-                    return res.send(JSON.stringify({code: 200}))
+                    else{
+                        for( let i=0;i<result.length;i++){
+                            if((result[i].ThoiGianBatDau < ThoiGianBatDau) && (result[i].ThoiGianketThuc > ThoiGianBatDau)){
+                                return res.send(JSON.stringify({code: 406, msg: `Thời gian chiếu trùng với lịch ID = ${result[i].IDLichChieu}`}))
+                            }
+                            if((result[i].ThoiGianBatDau < ThoiGianKetThuc) && (result[i].ThoiGianketThuc > ThoiGianKetThuc)){
+                                return res.send(JSON.stringify({code: 406,msg: `Thời gian chiếu trùng với lịch ID = ${result[i].IDLichChieu}`}))
+                            }
+                        }
+                        return res.send(JSON.stringify({code: 200}))
+                    }
                 }
-            }
-        })
+            })
+        }
+        else{
+            DBConnection.query(`SELECT * FROM lichchieu WHERE NgayChieu = '${NgayChieu}'`, (err,result) => {
+                if(err){
+                    console.log(err)
+                }
+                else{
+                    
+                    if(result.length == 0){
+                        return res.send(JSON.stringify({code: 200}))
+                    }
+                    else{
+                        for( let i=0;i<result.length;i++){
+                            if((result[i].ThoiGianBatDau < ThoiGianBatDau) && (result[i].ThoiGianketThuc > ThoiGianBatDau)){
+                                return res.send(JSON.stringify({code: 406, msg: `Thời gian chiếu trùng với lịch ID = ${result[i].IDLichChieu}`}))
+                            }
+                            if((result[i].ThoiGianBatDau < ThoiGianKetThuc) && (result[i].ThoiGianketThuc > ThoiGianKetThuc)){
+                                return res.send(JSON.stringify({code: 406,msg: `Thời gian chiếu trùng với lịch ID = ${result[i].IDLichChieu}`}))
+                            }
+                        }
+                        return res.send(JSON.stringify({code: 200}))
+                    }
+                }
+            })
+        }
     }
     // updateSchedule(
         
